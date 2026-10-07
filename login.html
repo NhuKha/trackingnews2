@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Stock Signal — Sign in</title>
+<style>
+*{box-sizing:border-box}body{font-family:system-ui,-apple-system,sans-serif;background:#0b0e14;color:#e8edf4;margin:0;min-height:100vh;display:grid;place-items:center;padding:24px}.panel{width:min(420px,100%);background:#121722;border:1px solid #242c3b;border-radius:18px;padding:28px;box-shadow:0 20px 70px rgba(0,0,0,.28)}h1{margin:0 0 8px;font-size:28px}.muted{color:#8c98aa;line-height:1.5}label{display:block;margin:24px 0 8px;color:#bdc7d7;font-size:14px}input{width:100%;padding:13px 14px;border-radius:10px;border:1px solid #39445a;background:#0b0e14;color:#fff;font-size:16px;outline:none}button{width:100%;margin-top:14px;background:#e8edf4;color:#0b0e14;border:0;border-radius:10px;padding:12px 14px;font-size:15px;font-weight:750;cursor:pointer}.error{color:#ff9a9a;min-height:22px;margin-top:12px;font-size:14px}.brand{font-size:13px;color:#8aa4ff;text-transform:uppercase;letter-spacing:.12em;font-weight:750}</style>
+</head>
+<body><div class="panel"><div class="brand">Personal dashboard</div><h1>Stock Signal</h1><div class="muted">Enter your private app password to continue.</div><form id="form"><label for="password">Password</label><input id="password" type="password" autocomplete="current-password" autofocus required><button type="submit">Open dashboard</button><div class="error" id="error"></div></form></div>
+<script>
+const form=document.getElementById('form'), error=document.getElementById('error');
+form.addEventListener('submit',async e=>{e.preventDefault();error.textContent='';const password=document.getElementById('password').value;try{const r=await fetch('/api/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password})});if(!r.ok){error.textContent='Incorrect password.';return}location.href='/dashboard'}catch(e){error.textContent='Could not connect to the app.'}})
+</script></body></html>

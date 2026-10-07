@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: stock-signal
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: APP_PASSWORD
+        sync: false
+      - key: APP_SECRET
+        generateValue: true
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: SEC_USER_AGENT
+        sync: false
+      - key: DATABASE_URL
+        value: sqlite:///./stock_signal.db
+      - key: X_BEARER_TOKEN
+        sync: false
+      - key: NEWSAPI_KEY
+        sync: false
+      - key: FINNHUB_API_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false

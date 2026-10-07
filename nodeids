@@ -1,0 +1,9 @@
+[
+  "tests/test_form4.py::test_insider_score_large_ceo_purchase",
+  "tests/test_form4.py::test_parse_form4",
+  "tests/test_form4.py::test_signal_scoring",
+  "tests/test_scores.py::test_market_signal_strength",
+  "tests/test_scores.py::test_social_acceleration",
+  "tests/test_scores.py::test_source_weighting",
+  "tests/test_scores.py::test_whale_13d_higher_than_13g"
+]
